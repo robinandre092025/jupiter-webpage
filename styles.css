@@ -5,14 +5,111 @@
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .anchor {
-    display: block;
-    margin-top: -100vh;
-    visibility: hidden;
-    height: 0;
+  display: block;
+  margin-top: -100vh;
+  visibility: hidden;
+  height: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background: url("assets/stars2.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+}
+
+@keyframes star-move {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes hubble-move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  height: 100px;
+  top: 50vh;
+  right: 10vw;
+  z-index: 0;
+  rotate: -10deg;
+  mix-blend-mode: exclusion;
+  visibility: hidden;
+  animation: none;
+  animation-play-state: paused;
+}
+
+.explosion {
+  position: absolute;
+  height: 700px;
+  top: 25vh;
+  left: 10vw;
+  z-index: 0;
+  opacity: 0.7;
+  visibility: hidden;
+  animation: none;
+  animation-play-state: paused;
+}
+
+.shooting-star.animate {
+  visibility: visible;
+  animation: star-move 20s linear forwards;
+  animation-play-state: running;
+}
+
+.explosion.animate {
+  visibility: visible;
+  animation: explosion 20s linear forwards;
+  animation-play-state: running;
+}
+
+#hubble {
+  position: absolute;
+  height: 50px;
+  top: 5vh;
+  right: 57vw;
+  animation: hubble-move 20s ease-in-out infinite;
 }
 
 .top-section {
@@ -39,22 +136,6 @@ html {
   text-shadow: 5px 5px 10px rgb(19, 17, 28);
 }
 
-#background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  background: url("assets/stars.jpg");
-  background-color: rgba(0, 0, 0, 0.3);
-  background-blend-mode: darken;
-}
-
 .jupiter-container {
   width: 40vw;
 }
@@ -66,6 +147,7 @@ main {
   left: -200px;
   transform: scale(1);
   transition: transform 0.25s;
+  border-radius: 100%;
 }
 
 #jupiter:hover {
@@ -85,6 +167,7 @@ main {
   height: 150px;
   transform: scale(1);
   transition: transform 0.25s;
+  border-radius: 100%;
 }
 
 .moons-container img:hover {
@@ -167,16 +250,20 @@ main {
 }
 
 .scroll-up {
-    position: fixed;
-    z-index: 3;
-    color: black;
-    scale: 2;
-    bottom: 5rem;
-    right: 8rem;
-    width: 50px;
-    height: 25px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 5px rgb(215, 189, 112);
-    background: rgb(222, 186, 56);
+  position: fixed;
+  z-index: 3;
+  color: black;
+  scale: 2;
+  bottom: 5rem;
+  right: 8rem;
+  width: 50px;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgb(215, 189, 112);
+  background: rgb(222, 186, 56);
+}
+
+.scroll-up:hover {
+  cursor: pointer;
 }
