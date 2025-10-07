@@ -112,6 +112,10 @@ main {
   animation: hubble-move 20s ease-in-out infinite;
 }
 
+#hubble:hover {
+  cursor: pointer;
+}
+
 .top-section {
   display: flex;
   height: 100vh;
